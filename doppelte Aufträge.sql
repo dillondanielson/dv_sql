@@ -24,9 +24,10 @@ LEFT JOIN
 	on salesamount.salesid = st.salesid
 Where 
 	st.salestype = 3 and st.salesid > 'A0005800000' --and st.documentstatus in ('0', '3')
-	and customerref not in ('1006002315','1006402879')
 	and left(st.salesid,3) <> 'COR'
+	and st.createddatetime > '2017-11-14'
 Group by 
 	st.winsplitordercounter,  st.salesname, st.customerref, countlines.expr2,salesamount.expr2,st.email, cast(st.createddatetime as Date)
+
 having 
 	count(st.salesid) > 1
