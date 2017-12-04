@@ -1,5 +1,5 @@
 SELECT 
-	count(st.recid), st.salesoriginid
+	st.recid,st.salesid as "SalesID      ", st.salesoriginid, cast(st.createddatetime as Date) as "CreateDate    "
 FROM "AX.PROD_DynamicsAX2012.dbo.SALESTABLE" as st
 WHERE
 	st.SalesStatus = 1
@@ -11,5 +11,7 @@ WHERE
 	AND st.WINOrderManagementBatchCounter = 0
 	AND st.MCROrderStopped = 0
 	--AND st.SalesOriginId = 'WINDELN_DE'
-GROUP BY
-	st.salesoriginid	
+--GROUP BY
+--	st.salesoriginid	
+order by 
+	st.createddatetime asc

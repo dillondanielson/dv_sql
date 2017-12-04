@@ -13,8 +13,8 @@ LEFT JOIN
 	"AX.PROD_DynamicsAX2012.dbo.WINSalesTableStaging" as stg
 	on stg.externaldocumentno = st.customerref 		
 WHERE
-	cast(cij.createddatetime as Date) >= '2017-09-30' and st.salesoriginid in ('WINDELN_DE','BEBITUS_FR','BEBITUS_PT','BEBITUS_ES')
-	and idp.recid IS NULL and left(cij.invoiceid,2)  = 'IN' --and st.customerref = '5600120999'
+	cast(cij.createddatetime as Date) >= '2017-09-30' --and st.salesoriginid in ('WINDELN_DE','BEBITUS_FR','BEBITUS_PT','BEBITUS_ES')
+	and idp.recid IS NULL and left(cij.invoiceid,2)  = 'IN' and st.customerref = '1009429610'
 	and stg.externaldocumentno IS NOT NULL
 	and st.createdby = 'Admin'
 Group by

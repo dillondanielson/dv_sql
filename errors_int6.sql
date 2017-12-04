@@ -6,6 +6,7 @@ Select
 		else 'na'
 	end	as "Status_INT06"
 	,ProductIdTransportProvider as "Lieferart    "
+	--,ShippingDate
 	,sum( case 
 		when statustext = '' then 1
 		else 0
@@ -19,13 +20,13 @@ From
 Where
 	status <> 1	--and statustext = ''
 Group by 
-	status,ProductIdTransportProvider
+	status,ProductIdTransportProvider--, ShippingDate
 order by 
 	case status
 		when 0 then 'created'
 		when 1 then 'finished'
 		when 2 then 'error'
 		else 'na'
-	end,ProductIdTransportProvider
+	end,ProductIdTransportProvider--, ShippingDate
 
 	
