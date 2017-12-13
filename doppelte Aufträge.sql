@@ -27,7 +27,7 @@ Where
 	and left(st.salesid,3) <> 'COR'
 	and st.createdby = 'Admin'
 	and st.winsplitordercounter = 0
-	and st.createddatetime > '2017-11-26'
+	and st.createddatetime > '2017-11-27'
 Group by 
 	st.winsplitordercounter,  st.salesname, st.salesoriginid,st.customerref, countlines.expr2,salesamount.expr2,st.email, cast(st.createddatetime as Date)
 

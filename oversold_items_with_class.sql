@@ -30,7 +30,7 @@ LEFT JOIN
 	"AX.PROD_DynamicsAX2012.dbo.INVENTDIM"  as dim
 	on invsum.inventdimid = dim.inventdimid
 WHERE	
-	dim.inventlocationid in ('FIEGE_GB','CTC_BCN','FIEGE_AR','USTER')
+	dim.inventlocationid in ('FIEGE_GB','CTC_BCN','FIEGE_AR','USTER','BWH_CA')
 	--and invsum.itemid = '0000000000055'	
 )
 
@@ -43,4 +43,7 @@ Left join
 	on item_class.itemid = stock.itemid and item_class.inventsiteid = stock.inventsiteid
 Where
 	stock.PhysAvailable - stock.onorder < 0
+order by
+	stock.onorder desc
+	
 		

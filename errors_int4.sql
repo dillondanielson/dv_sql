@@ -1,5 +1,5 @@
 Select 
-	/*cast(createddatetime as Date) "Anlagedatum", */
+	cast(createddatetime as Date) "Anlagedatum", 
 	case status
 		when 0 then 'created'
 		when 1 then 'finished'
@@ -12,7 +12,7 @@ From
 Where
 	status <> 1	
 Group by 
-	/*cast(createddatetime as Date),*/ status
---order by 
---	cast(createddatetime as Date) desc	
+	cast(createddatetime as Date),status
+order by 
+	cast(createddatetime as Date) desc	
 	

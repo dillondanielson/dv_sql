@@ -1,10 +1,13 @@
 SELECT
-	cast(cit.createddatetime as Date) as "CreatedDate",cit.invoiceid, cit.salesid, cit.itemid, cit.taxgroup, cit.qty, cit.salesprice, cit.taxitemgroup, tt.taxcode
+	cast(cit.createddatetime as Date) as "CreatedDate",cit.invoiceid, cit.salesid, cit.itemid, cit.taxgroup, cit.qty, cit.salesprice, cit.taxitemgroup, tt.taxcode, st.salesoriginid
 FROM
 	"AX.PROD_DynamicsAX2012.dbo.CustInvoiceTrans" as cit
 LEFT JOIN
 	"AX.PROD_DynamicsAX2012.dbo.TaxTrans" as tt	
 	on tt.voucher = cit.invoiceid and cit.taxitemgroup = tt.taxitemgroup
+LEFT JOIN
+	"AX.PROD_DynamicsAX2012.dbo.SalesTable" as st	
+	on cit.salesid = st.salesid		
 Where
 	cit.TaxGroup = 'FR_NAT' --and cit.invoiceid = 'IN04493061'
 	and cit.itemid in 
