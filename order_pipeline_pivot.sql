@@ -4,7 +4,7 @@ Select
 			when '0' then 1
 			else 0
 		end ) as "OnHold",
-		sum(case st.documentstatus
+		sum(case st.documentstatus	
 			when '3' then 1
 			else 0
 		end ) as "Confirmed",

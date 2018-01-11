@@ -20,8 +20,9 @@ LEFT JOIN
 	"AX.PROD_DynamicsAX2012.dbo.WINAIFOUTBOUNDINTERFACEMESSAGELOG" as wol
 	on wol.ENTITYRECID = st.recid
 Where
-	st.documentstatus = 4 and st.salesstatus <> 4
-	and cast(st.createddatetime as Date) between '2017-02-01' and CURDATE()
-	and st.customerref = '6000270113'
+	--st.documentstatus = 4 and st.salesstatus <> 4
+	--and 
+	cast(st.createddatetime as Date) between '2017-02-01' and CURDATE()
+	and st.customerref = '1500980225'
 order by 
 	cast(st.createddatetime as date) asc

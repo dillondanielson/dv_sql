@@ -23,7 +23,7 @@ WHERE
 	and st.salesoriginid in ('WINDELN_DE','BEBITUS_FR','BEBITUS_PT','BEBITUS_ES')
 	--and idp.recid IS NULL 
 	and st.salestype = 3
-	and st.customerref in ('1009429610','1009431713','1009431719','1009431721','1009431625')
+	and st.customerref in ('1009520550')
 	and stg.externaldocumentno IS NOT NULL
 	--and st.createdby = 'Admin'
 --Group by

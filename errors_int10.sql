@@ -9,18 +9,22 @@ Select
 	, cast(createddatetime as Date) "Anlagedatum    ",
 	case left(purchid,2)
 		when 'TF' then 'UML'
-		else 'BEST'
+		when 'BE' then 'BEST'
+		else 'na'
+		
 	end "Type of Entry"
 
 FROM 
 	"AX.PROD_DynamicsAX2012.dbo.WINPURCHORDERRECEIPTTABLESTAGING"
 Where status <> 1	
 Group by status, cast(createddatetime as Date),
-	case left(purchid,2)
+case left(purchid,2)
 		when 'TF' then 'UML'
-		else 'BEST'
+		when 'BE' then 'BEST'
+		else 'na'
 	end 
 order by case left(purchid,2)
 		when 'TF' then 'UML'
-		else 'BEST'
+		when 'BE' then 'BEST'
+		else 'na'
 	end ,cast(createddatetime as Date) desc
