@@ -1,6 +1,6 @@
 SELECT 
 
-stg.salesid,st.salesoriginid,	case st.salesstatus
+stg.salesid as "Auftragsnummer        ",stg.statustext,pt.purchid,st.salesoriginid,	case st.salesstatus
 			when '1' then 'Open order'
 			when '3' then 'Invoiced'
 			when '4' then 'Canceled'
@@ -14,12 +14,16 @@ stg.salesid,st.salesoriginid,	case st.salesstatus
 			when '7' then 'Invoice'
 			else 'na'
 		end "DocumentStatus",
-		stg.deliverydate--,doc.notes
+		stg.ProductIdTransportProvider,stg.deliverydate--,doc.notes
 
 FROM 
 	"AX.PROD_DynamicsAX2012.dbo.WINSALESORDEROUTPUTTABLESTAGING" as stg
 
-INNER JOIN   
+LEFT JOIN
+	"AX.PROD_DynamicsAX2012.dbo.PURCHTABLE" as pt
+	on stg.salesid = pt.intercompanyoriginalsalesid
+
+LEFT JOIN   
 	"AX.PROD_DynamicsAX2012.dbo.SALESTABLE" as st
 	on stg.salesid = st.salesid
 	--and st.salesoriginid = 'TMALL_CN'
@@ -30,12 +34,12 @@ INNER JOIN
 	on stg.salesid = tra.inventrefid
 	and	tra.mcrcleared = '0'
 	
-INNER JOIN  
+LEFT JOIN  
 	"AX.PROD_DynamicsAX2012.dbo.DOCUREF" as doc 
 	on tra.RECID = DOC.REFRECID
 	and doc.notes IS NOT NULL
-	--and doc.notes <> 'WUNDERLAND'
-	--and doc.notes NOT LIKE'1%'	*/
+	and doc.notes <> 'WUNDERLAND'
+	and doc.notes NOT LIKE'1%'	*/
 	
 Where 
 	stg.status = 2 --and st.salesstatus = 1 and st.documentstatus = 4

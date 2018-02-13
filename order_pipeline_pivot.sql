@@ -53,6 +53,6 @@ order by st.salesoriginid
 -- 4 -> Kommissionierliste
 
 -- SalesType Header (salestype)
--- 0 -> Journal
+-- 0 -> Journal	
 -- 4 -> zurückgegebener Auftrag
 -- 3 -> Auftrag
