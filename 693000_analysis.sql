@@ -7,4 +7,5 @@ LEFT JOIN
 	 on gj.recid = gja.generaljournalentry 
 Where
 	--gj.subledgervoucher = 'REB0026360'	and
-	left(gja.ledgeraccount,6) = 693000
+	left(gja.ledgeraccount,6) = 688100
+	and gj.createdby = 'yilmazR'

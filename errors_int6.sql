@@ -25,7 +25,7 @@ order by
 	case status
 		when 0 then 'created'
 		when 1 then 'finished'
-		when 2 then 'error'
+		when 2 then 'error'	
 		else 'na'
 	end,ProductIdTransportProvider--, ShippingDate
 
